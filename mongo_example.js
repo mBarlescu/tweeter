@@ -13,10 +13,9 @@ MongoClient.connect(MONGODB_URI, (err, db) => {
   console.log(`Connected to mongodb: ${MONGODB_URI}`);
 
   // ==> Refactored and wrapped as new, tweet-specific function:
-
   function getTweets(callback) {
-  db.collection("tweets").find().toArray(callback);
-}
+    db.collection("tweets").find().toArray(callback);
+  }
 
   // ==> Later it can be invoked. Remember even if you pass
   //     `getTweets` to another scope, it still has closure over
