@@ -19,15 +19,16 @@ dataBase.connect(MONGODB_URI, (err, db) => {
     console.error(`Failed to connect: ${MONGODB_URI}`);
     throw err;
   }
-    const DataHelpers = require("./lib/data-helpers.js")(db);
+
+  const DataHelpers = require("./lib/data-helpers.js")(db);
 
 
 // The `tweets-routes` module works similarly: we pass it the `DataHelpers` object
 // so it can define routes that use it to interact with the data layer.
-    const tweetsRoutes = require("./routes/tweets")(DataHelpers);
+  const tweetsRoutes = require("./routes/tweets")(DataHelpers);
 // https://goo.gl/5hS3Zy  NACHOOOOOOOOOOS!
 // Mount the tweets routes at the "/tweets" path prefix:
-    app.use("/tweets", tweetsRoutes);
+  app.use("/tweets", tweetsRoutes);
 
 });
 // The `data-helpers` module provides an interface to the database of tweets.
